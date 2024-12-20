@@ -1,19 +1,14 @@
-const {Router} = require('express');
+const { Router } = require('express');
+const {
+    getProductsHandler,
+    getProDetalisHandler,
+    createProductsHandler
+} = require('../handlers/productsHandler')
 
 const productsRouter = Router();
 
-
-    productsRouter.get("/", (req, res)=>{
-        res.status(200).send('Todos los productos')
-    })
-
-    productsRouter.get("/:id", (req, res)=>{
-        res.status(200).send('Detalle del producto')
-    })
-
-
-    productsRouter.post("/", (req, res)=>{
-        res.status(200).send('Creando productos')
-    })
+productsRouter.get("/", getProductsHandler)
+productsRouter.get("/:id", getProDetalisHandler)
+productsRouter.post("/", createProductsHandler)
 
 module.exports = productsRouter;
